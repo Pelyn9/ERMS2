@@ -15,13 +15,26 @@
                 <tr>
                     <th>#</th>
                     <th>Title</th>
+                    <th>Action</th>
                 </tr>
             </thead>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
             <tbody>
                 @foreach($data as $department)
                 <tr>
                     <td>{{ $department->id }}</td>
                     <td>{{ $department->title }}</td>
+                    <td>
+                    <a href="{{ url('depart/'.$department->id) }}" class="btn btn-warning btn-sm">Show</a>
+                    <a href="{{ url('depart/'.$department->id.'/edit') }}" class="btn btn-info btn-sm">Update</a>
+                        <a onclick="return confirm('Are you sure to delete this data?')" href="{{ url('depart/'.$department->id.'/delete') }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
